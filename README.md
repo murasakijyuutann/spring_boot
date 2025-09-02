@@ -1,5 +1,11 @@
 # 📚 MyApp - Spring Boot API
 
+![Java](https://img.shields.io/badge/Java-17-blue)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5.5-brightgreen)
+![MyBatis](https://img.shields.io/badge/MyBatis-3.0.5-blueviolet)
+![Build](https://img.shields.io/badge/build-passing-brightgreen)
+![License](https://img.shields.io/badge/license-MIT-yellow)
+
 A simple Spring Boot backend built with:
 
 - ✅ Spring Boot `3.5.5`
@@ -36,6 +42,8 @@ A simple Spring Boot backend built with:
 | Dev Tools   | Lombok, Devtools          |
 
 ---
+
+### 🧪 Sample Request
 
 ## 🗂️ Project Structure
 
