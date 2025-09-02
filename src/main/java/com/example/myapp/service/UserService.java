@@ -135,5 +135,15 @@ public class UserService {
     public boolean checkPassword(String rawPassword, String hashedPassword) {
         return passwordEncoder.matches(rawPassword, hashedPassword);
     }
+    // 🔐 Login logic
+    public User login(String email, String rawPassword) {
+        User user = userMapper.findByEmail(email); // find user from DB
+
+        if (user == null || !passwordEncoder.matches(rawPassword, user.getPasswordHash())) {
+            throw new RuntimeException("❌ Invalid email or password");
+        }
+
+        return user;
+    }
 
 }
