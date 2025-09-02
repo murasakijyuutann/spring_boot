@@ -25,7 +25,7 @@ A simple Spring Boot backend built with:
 - 🧠 Exception handling via `@ControllerAdvice`
 - 🧪 Validations using `@Valid` and `@ExceptionHandler`
 - 🔎 API documentation with Swagger/OpenAPI
-- 🧰 Environment-configurable using `application.properties`
+- 🧰 Environment-configurable using `application.yml`
 
 ---
 

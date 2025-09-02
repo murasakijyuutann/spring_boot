@@ -7,6 +7,10 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.security.access.AccessDeniedException;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.validation.BindException;
+
+import jakarta.validation.ConstraintViolationException;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -73,7 +77,7 @@ public class GlobalExceptionHandler {
         error.put("message", "Request body is invalid or missing.");
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
- 
+
     @ExceptionHandler(MissingServletRequestParameterException.class)
     public ResponseEntity<Map<String, Object>> handleMissingParams(MissingServletRequestParameterException ex) {
         Map<String, Object> error = new HashMap<>();
@@ -86,12 +90,41 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(AccessDeniedException.class)
     public ResponseEntity<Map<String, Object>> handleAccessDenied(AccessDeniedException ex) {
-    Map<String, Object> error = new HashMap<>();
-    error.put("timestamp", LocalDateTime.now());
-    error.put("status", HttpStatus.FORBIDDEN.value());
-    error.put("error", "Access Denied");
-    error.put("message", ex.getMessage());
-    return new ResponseEntity<>(error, HttpStatus.FORBIDDEN);
-}
+        Map<String, Object> error = new HashMap<>();
+        error.put("timestamp", LocalDateTime.now());
+        error.put("status", HttpStatus.FORBIDDEN.value());
+        error.put("error", "Access Denied");
+        error.put("message", ex.getMessage());
+        return new ResponseEntity<>(error, HttpStatus.FORBIDDEN);
+    }
 
+    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+    public ResponseEntity<Map<String, Object>> handleMethodNotSupported(HttpRequestMethodNotSupportedException ex) {
+        Map<String, Object> error = new HashMap<>();
+        error.put("timestamp", LocalDateTime.now());
+        error.put("status", HttpStatus.METHOD_NOT_ALLOWED.value());
+        error.put("error", "Method Not Allowed");
+        error.put("message", ex.getMessage());
+        return new ResponseEntity<>(error, HttpStatus.METHOD_NOT_ALLOWED);
+    }
+
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity<Map<String, Object>> handleConstraintViolation(ConstraintViolationException ex) {
+        Map<String, Object> error = new HashMap<>();
+        error.put("timestamp", LocalDateTime.now());
+        error.put("status", HttpStatus.BAD_REQUEST.value());
+        error.put("error", "Constraint Violation");
+        error.put("message", ex.getMessage());
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(BindException.class)
+    public ResponseEntity<Map<String, Object>> handleBindErrors(BindException ex) {
+        Map<String, Object> error = new HashMap<>();
+        error.put("timestamp", LocalDateTime.now());
+        error.put("status", HttpStatus.BAD_REQUEST.value());
+        error.put("error", "Binding Error");
+        error.put("message", "Input fields are invalid.");
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
 }

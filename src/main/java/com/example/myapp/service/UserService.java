@@ -131,4 +131,9 @@ public class UserService {
     public void updateEmail(Long id, String email) {
         userMapper.updateEmail(id, email);
     }
+
+    public boolean checkPassword(String rawPassword, String hashedPassword) {
+        return passwordEncoder.matches(rawPassword, hashedPassword);
+    }
+
 }
