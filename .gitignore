@@ -1,0 +1,50 @@
+# ===================
+# Build & Dependency
+# ===================
+/target/
+build/
+*.log
+
+# Maven wrapper
+.mvn/wrapper/maven-wrapper.jar
+
+# ===================
+# IDEs
+# ===================
+
+# VS Code
+.vscode/
+
+# IntelliJ
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Eclipse / Spring Tool Suite (STS)
+.apt_generated/
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache/
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# ===================
+# OS-generated
+# ===================
+.DS_Store
+Thumbs.db
+
+# ===================
+# Misc
+# ===================
+.env
+HELP.md
