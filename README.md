@@ -8,7 +8,7 @@
 
 A simple Spring Boot backend built with:
 
-- ✅ Spring Boot `3.5.5`
+- ✅ Spring Boot `3.2.5`
 - ✅ MyBatis `3.0.5`
 - ✅ MySQL
 - ✅ RESTful API design
