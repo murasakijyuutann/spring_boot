@@ -33,7 +33,7 @@ A simple Spring Boot backend built with:
 
 | Layer       | Tech                      |
 |-------------|---------------------------|
-| Backend     | Spring Boot 3.5.5         |
+| Backend     | Spring Boot 3.2.5         |
 | ORM         | MyBatis                   |
 | DB          | MySQL                     |
 | Auth        | Spring Security (starter) |
